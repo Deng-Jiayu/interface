@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+    </Filter>
+    <Filter Include="Source Files\公用界面">
+      <UniqueIdentifier>{0ddc8c92-b8be-4fe7-960f-7a1f3e5fa6eb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="interface.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <QtUic Include="interface.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtMoc Include="interface.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="（绑定身份）check_identity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="（登陆）interface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="（更改老师信息）admin_teacherinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="（更改学生信息）admin_change.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="（管理员主页面）message.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="(课程给分)grantpoint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="（课程信息）admin_classinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="(老师个人信息)te_personalinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="（老师信息）information.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="(老师修改密码)updatecode_te.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="(老师主界面)te_message.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="(添课与删课)addcourse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="(添删)admin_changeclass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="（我的课程）personalclass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="(我的课程)te_myclass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="(修改密码)updatemycode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="（选课）stu_chooseclass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="(学生个人信息)personalinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="(学生信息)mystudent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="（学生信息）stu_info.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="(学生主界面)stu_message.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="(注册)regist.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="admin_updateclassinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="chooseclass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="classroom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="grade.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="te_grantgrade.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vssql.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="location.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="addcourse.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="admin_change.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="admin_changeclass.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="admin_classinfo.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="admin_teacherinfo.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="admin_updateclassinfo.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="check_identity.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="chooseclass.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="classroom.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="grade.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="grantpoint.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="information.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="message.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="mystudent.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="personalclass.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="personalinfo.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="regist.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="stu_chooseclass.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="stu_info.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="stu_message.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="te_grantgrade.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="te_message.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="te_myclass.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="te_personalinfo.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="updatecode_te.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="updatemycode.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="location.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="addcourse.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="admin_change.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="admin_changeclass.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="admin_classinfo.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="admin_teacherinfo.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="check_identity.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="chooseclass.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="classroom.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="grade.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="grantpoint.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="information.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="message.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="mystudent.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="personalclass.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="personalinfo.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="regist.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="stu_chooseclass.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="stu_info.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="stu_message.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="te_grantgrade.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="te_message.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="te_myclass.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="te_personalinfo.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="updatecode_te.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="updatemycode.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="location.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="admin_updateclassinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vssql.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

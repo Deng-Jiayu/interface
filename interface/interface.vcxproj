@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8E387BDA-DF42-47FE-88B6-05CED748BCC3}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
+    <QtInstall>5.12.2_msvc2017_64</QtInstall>
+    <QtModules>core;gui;widgets</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
+    <QtInstall>5.12.2_msvc2017_64</QtInstall>
+    <QtModules>core;xml;sql;gui;widgets</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="(修改密码)updatemycode.cpp" />
+    <ClCompile Include="(学生个人信息)personalinfo.cpp" />
+    <ClCompile Include="(学生主界面)stu_message.cpp" />
+    <ClCompile Include="(学生信息)mystudent.cpp" />
+    <ClCompile Include="(我的课程)te_myclass.cpp" />
+    <ClCompile Include="(注册)regist.cpp" />
+    <ClCompile Include="(添删)admin_changeclass.cpp" />
+    <ClCompile Include="(添课与删课)addcourse.cpp" />
+    <ClCompile Include="(老师个人信息)te_personalinfo.cpp" />
+    <ClCompile Include="(老师主界面)te_message.cpp" />
+    <ClCompile Include="(老师修改密码)updatecode_te.cpp" />
+    <ClCompile Include="(课程给分)grantpoint.cpp" />
+    <ClCompile Include="admin_updateclassinfo.cpp" />
+    <ClCompile Include="chooseclass.cpp" />
+    <ClCompile Include="classroom.cpp" />
+    <ClCompile Include="grade.cpp" />
+    <ClCompile Include="location.cpp" />
+    <ClCompile Include="te_grantgrade.cpp" />
+    <ClCompile Include="vssql.cpp" />
+    <ClCompile Include="（学生信息）stu_info.cpp" />
+    <ClCompile Include="（我的课程）personalclass.cpp" />
+    <ClCompile Include="（更改学生信息）admin_change.cpp" />
+    <ClCompile Include="（更改老师信息）admin_teacherinfo.cpp" />
+    <ClCompile Include="（登陆）interface.cpp" />
+    <ClCompile Include="（管理员主页面）message.cpp" />
+    <ClCompile Include="（绑定身份）check_identity.cpp" />
+    <ClCompile Include="（老师信息）information.cpp" />
+    <ClCompile Include="（课程信息）admin_classinfo.cpp" />
+    <ClCompile Include="（选课）stu_chooseclass.cpp" />
+    <QtRcc Include="interface.qrc" />
+    <QtUic Include="addcourse.ui" />
+    <QtUic Include="admin_change.ui" />
+    <QtUic Include="admin_changeclass.ui" />
+    <QtUic Include="admin_classinfo.ui" />
+    <QtUic Include="admin_teacherinfo.ui" />
+    <QtUic Include="admin_updateclassinfo.ui" />
+    <QtUic Include="check_identity.ui" />
+    <QtUic Include="chooseclass.ui" />
+    <QtUic Include="classroom.ui" />
+    <QtUic Include="grade.ui" />
+    <QtUic Include="grantpoint.ui" />
+    <QtUic Include="information.ui" />
+    <QtUic Include="interface.ui" />
+    <QtMoc Include="interface.h" />
+    <ClCompile Include="main.cpp" />
+    <QtUic Include="location.ui" />
+    <QtUic Include="message.ui" />
+    <QtUic Include="mystudent.ui" />
+    <QtUic Include="personalclass.ui" />
+    <QtUic Include="personalinfo.ui" />
+    <QtUic Include="regist.ui" />
+    <QtUic Include="stu_chooseclass.ui" />
+    <QtUic Include="stu_info.ui" />
+    <QtUic Include="stu_message.ui" />
+    <QtUic Include="te_grantgrade.ui" />
+    <QtUic Include="te_message.ui" />
+    <QtUic Include="te_myclass.ui" />
+    <QtUic Include="te_personalinfo.ui" />
+    <QtUic Include="updatecode_te.ui" />
+    <QtUic Include="updatemycode.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="addcourse.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="admin_change.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="admin_changeclass.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="admin_classinfo.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="admin_teacherinfo.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="admin_updateclassinfo.h" />
+    <QtMoc Include="location.h" />
+    <ClInclude Include="vssql.h" />
+    <QtMoc Include="updatemycode.h" />
+    <QtMoc Include="updatecode_te.h" />
+    <QtMoc Include="te_personalinfo.h" />
+    <QtMoc Include="te_myclass.h" />
+    <QtMoc Include="te_message.h" />
+    <QtMoc Include="te_grantgrade.h" />
+    <QtMoc Include="stu_message.h" />
+    <QtMoc Include="stu_info.h" />
+    <QtMoc Include="stu_chooseclass.h" />
+    <QtMoc Include="regist.h" />
+    <QtMoc Include="personalinfo.h" />
+    <QtMoc Include="personalclass.h" />
+    <QtMoc Include="mystudent.h" />
+    <QtMoc Include="message.h" />
+    <QtMoc Include="information.h" />
+    <QtMoc Include="grantpoint.h" />
+    <QtMoc Include="grade.h" />
+    <QtMoc Include="classroom.h" />
+    <QtMoc Include="chooseclass.h" />
+    <QtMoc Include="check_identity.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
