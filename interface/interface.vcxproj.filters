@@ -24,6 +24,18 @@
     <Filter Include="Source Files\公用界面">
       <UniqueIdentifier>{0ddc8c92-b8be-4fe7-960f-7a1f3e5fa6eb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\老师">
+      <UniqueIdentifier>{ac1df46e-dd9e-416a-8305-3ce876e4bfeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\管理员">
+      <UniqueIdentifier>{1d2f3d93-05ca-4aca-8b77-aacc092f3bb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\学生">
+      <UniqueIdentifier>{c53b214c-b6a6-47ff-801a-13278ca6dc82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\a正在使用">
+      <UniqueIdentifier>{480dc7fa-60c5-4eac-a477-a44ae96ae260}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="interface.qrc">
@@ -40,92 +52,95 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="（绑定身份）check_identity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="（登陆）interface.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="（更改老师信息）admin_teacherinfo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="（更改学生信息）admin_change.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="（管理员主页面）message.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="(课程给分)grantpoint.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="（课程信息）admin_classinfo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="(老师个人信息)te_personalinfo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="（老师信息）information.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="(老师修改密码)updatecode_te.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="(老师主界面)te_message.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="(添课与删课)addcourse.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="(添删)admin_changeclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="（我的课程）personalclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="(我的课程)te_myclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="(修改密码)updatemycode.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="（选课）stu_chooseclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="(学生个人信息)personalinfo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="(学生信息)mystudent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="（学生信息）stu_info.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="(学生主界面)stu_message.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="(注册)regist.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="admin_updateclassinfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="chooseclass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="classroom.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="grade.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="te_grantgrade.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="vssql.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="(我的课程)te_myclass.cpp">
+      <Filter>Source Files\老师</Filter>
+    </ClCompile>
+    <ClCompile Include="(老师主界面)te_message.cpp">
+      <Filter>Source Files\老师</Filter>
+    </ClCompile>
+    <ClCompile Include="(老师修改密码)updatecode_te.cpp">
+      <Filter>Source Files\老师</Filter>
+    </ClCompile>
+    <ClCompile Include="(老师个人信息)te_personalinfo.cpp">
+      <Filter>Source Files\老师</Filter>
+    </ClCompile>
+    <ClCompile Include="（更改老师信息）admin_teacherinfo.cpp">
+      <Filter>Source Files\管理员</Filter>
+    </ClCompile>
+    <ClCompile Include="（更改学生信息）admin_change.cpp">
+      <Filter>Source Files\管理员</Filter>
+    </ClCompile>
+    <ClCompile Include="（管理员主页面）message.cpp">
+      <Filter>Source Files\管理员</Filter>
+    </ClCompile>
+    <ClCompile Include="(课程给分)grantpoint.cpp">
+      <Filter>Source Files\老师</Filter>
+    </ClCompile>
+    <ClCompile Include="（课程信息）admin_classinfo.cpp">
+      <Filter>Source Files\管理员</Filter>
+    </ClCompile>
+    <ClCompile Include="（老师信息）information.cpp">
+      <Filter>Source Files\管理员</Filter>
+    </ClCompile>
+    <ClCompile Include="(学生主界面)stu_message.cpp">
+      <Filter>Source Files\学生</Filter>
+    </ClCompile>
+    <ClCompile Include="(学生个人信息)personalinfo.cpp">
+      <Filter>Source Files\学生</Filter>
+    </ClCompile>
+    <ClCompile Include="（我的课程）personalclass.cpp">
+      <Filter>Source Files\学生</Filter>
+    </ClCompile>
+    <ClCompile Include="(修改密码)updatemycode.cpp">
+      <Filter>Source Files\学生</Filter>
+    </ClCompile>
+    <ClCompile Include="(添删)admin_changeclass.cpp">
+      <Filter>Source Files\管理员</Filter>
+    </ClCompile>
+    <ClCompile Include="admin_updateclassinfo.cpp">
+      <Filter>Source Files\管理员</Filter>
+    </ClCompile>
+    <ClCompile Include="te_grantgrade.cpp">
+      <Filter>Source Files\老师</Filter>
+    </ClCompile>
+    <ClCompile Include="（绑定身份）check_identity.cpp">
+      <Filter>Source Files\公用界面</Filter>
+    </ClCompile>
+    <ClCompile Include="（登陆）interface.cpp">
+      <Filter>Source Files\公用界面</Filter>
+    </ClCompile>
+    <ClCompile Include="(注册)regist.cpp">
+      <Filter>Source Files\公用界面</Filter>
+    </ClCompile>
+    <ClCompile Include="classroom.cpp">
+      <Filter>Source Files\公用界面</Filter>
+    </ClCompile>
+    <ClCompile Include="（选课）stu_chooseclass.cpp">
+      <Filter>Source Files\a正在使用</Filter>
+    </ClCompile>
+    <ClCompile Include="te_myclass_stu.cpp">
+      <Filter>Source Files\a正在使用</Filter>
+    </ClCompile>
     <ClCompile Include="location.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\公用界面</Filter>
+    </ClCompile>
+    <ClCompile Include="(学生信息)mystudent.cpp">
+      <Filter>Source Files\a正在使用</Filter>
+    </ClCompile>
+    <ClCompile Include="(添课与删课)addcourse.cpp">
+      <Filter>Source Files\a正在使用</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -210,11 +225,11 @@
     <QtUic Include="location.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="te_myclass_stu.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="addcourse.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="admin_change.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -246,9 +261,6 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="message.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="mystudent.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="personalclass.h">
@@ -287,8 +299,17 @@
     <QtMoc Include="updatemycode.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="te_myclass_stu.h">
+      <Filter>Source Files\a正在使用</Filter>
+    </QtMoc>
     <QtMoc Include="location.h">
       <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="mystudent.h">
+      <Filter>Source Files\a正在使用</Filter>
+    </QtMoc>
+    <QtMoc Include="addcourse.h">
+      <Filter>Source Files\a正在使用</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

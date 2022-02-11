@@ -8,12 +8,13 @@
 #include "addcourse.h"
 #include "te_grantgrade.h"
 #include "classroom.h"
+#include "te_myclass_stu.h"
 class te_message : public QWidget
 {
 	Q_OBJECT
 
 public:
-	te_message(QWidget *parent = Q_NULLPTR);
+	te_message(QWidget* parent = Q_NULLPTR);
 	~te_message();
 	QString inputName_te;//老师用户名
 	QString tno_te;//老师工号
@@ -23,5 +24,5 @@ protected:
 
 private:
 	Ui::te_message ui;
-	te_personalinfo *person_te = NULL;
+	te_personalinfo* person_te = NULL;
 };

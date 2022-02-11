@@ -27,6 +27,13 @@
       <item>
        <widget class="QLineEdit" name="lineEdit"/>
       </item>
+      <item>
+       <widget class="QPushButton" name="outputbtn">
+        <property name="text">
+         <string>导出</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>

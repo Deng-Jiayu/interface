@@ -32,7 +32,7 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>5.12.2_msvc2017_64</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;sql;gui;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
@@ -76,7 +76,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -112,6 +112,7 @@
     <ClCompile Include="grade.cpp" />
     <ClCompile Include="location.cpp" />
     <ClCompile Include="te_grantgrade.cpp" />
+    <ClCompile Include="te_myclass_stu.cpp" />
     <ClCompile Include="vssql.cpp" />
     <ClCompile Include="（学生信息）stu_info.cpp" />
     <ClCompile Include="（我的课程）personalclass.cpp" />
@@ -151,6 +152,7 @@
     <QtUic Include="te_grantgrade.ui" />
     <QtUic Include="te_message.ui" />
     <QtUic Include="te_myclass.ui" />
+    <QtUic Include="te_myclass_stu.ui" />
     <QtUic Include="te_personalinfo.ui" />
     <QtUic Include="updatecode_te.ui" />
     <QtUic Include="updatemycode.ui" />
@@ -173,6 +175,7 @@
   <ItemGroup>
     <ClInclude Include="admin_updateclassinfo.h" />
     <QtMoc Include="location.h" />
+    <QtMoc Include="te_myclass_stu.h" />
     <ClInclude Include="vssql.h" />
     <QtMoc Include="updatemycode.h" />
     <QtMoc Include="updatecode_te.h" />

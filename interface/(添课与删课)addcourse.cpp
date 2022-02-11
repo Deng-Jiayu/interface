@@ -1,157 +1,211 @@
-#include "addcourse.h"
+ï»¿#include "addcourse.h"
+#include<qtablewidget.h>
+#include<qsqlquery.h>
+#include<QTableWidgetItem>
+#include<QStringList>
+#include<qstring.h>
+#include<qdebug.h>
+#include<qpushbutton.h>
 #include<QSqlQueryModel>
 #include<QMessageBox>
-#include<QSqlQuery>
+
 #ifdef WIN32  
 #pragma execution_character_set("utf-8")  
 #endif
-addcourse::addcourse(QWidget *parent)
+
+addcourse::addcourse(QWidget* parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
-	this->setFixedSize(906,774);
-	ui.lineEdit_cno->setPlaceholderText("ÇëÊäÈëÌí¼Ó/É¾³ıµÄ¿Î³ÌºÅ(±ØÌî)");
-	//ui.lineEdit_tno->setPlaceholderText("ÇëÊäÈëÕıÈ·µÄ½ÌÊ¦¹¤ºÅ");
-	//ui.lineEdit_cname->setPlaceholderText("ÇëÊäÈëÕıÈ·µÄ½ÌÊ¦ĞÕÃû");
-	ui.lineEdit_cname->setPlaceholderText("ÇëÊäÈë¿Î³ÌÃû(Ìí¿ÎÊ±±ØÌî)");
-	ui.lineEdit_credit->setPlaceholderText("ÇëÊäÈë¿Î³ÌÑ§·Ö(Ìí¿ÎÊ±±ØÌî)");
-	ui.lineEdit_ctime->setPlaceholderText("ÇëÊäÈëÉÏ¿Î¿ªÊ¼Ê±¼ä(Ìí¿ÎÊ±±ØÌî)");
-	ui.lineEdit_cnum->setPlaceholderText("ÇëÊäÈëÉÏ¿ÎÑ§ÉúÃû¶î(Ìí¿ÎÊ±±ØÌî)");
-	ui.lineEdit_csite->setPlaceholderText("ÇëÊäÈëÕıÈ·µÄÉÏ¿ÎµÄµØµã(Ìí¿ÎÊ±±ØÌî)");
-	connect(ui.ensurebtn, &QPushButton::clicked, [=]() {
-		addc();
+	this->setFixedSize(1658, 1088);
 
-	});
-	connect(ui.pushButton, &QPushButton::clicked, [=]() {
-		delc();
-
-	});
-	connect(ui.exitbtn, &QPushButton::clicked, [=]() {
-		this->close();
-
-	});
 }
+void addcourse::init_info()
+{
+	QTableWidgetItem* headerItem = NULL;;
+	QStringList headerText;
+	headerText << QString::fromLocal8Bit("è¯¾ç¨‹id") << QString::fromLocal8Bit("è¯¾ç¨‹å") << QString::fromLocal8Bit("æ•™å¸ˆå·¥å·")
+		<< QString::fromLocal8Bit("æ•™å¸ˆå§“å") << QString::fromLocal8Bit("è¯¾ç¨‹ç±»å‹") << QString::fromLocal8Bit("å­¦åˆ†") << QString::fromLocal8Bit("ä¸Šè¯¾æ—¶é—´")
+		<< QString::fromLocal8Bit("åé¢") << QString::fromLocal8Bit("åœ°ç‚¹") << QString::fromLocal8Bit("ä»»è¯¾");
+	ui.tableWidget->setHorizontalHeaderLabels(headerText);
+	ui.tableWidget->setColumnCount(headerText.count());
+	//ui.tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);//åˆ—ç­‰å®½
+	ui.tableWidget->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);     //ç„¶åè®¾ç½®è¦æ ¹æ®å†…å®¹ä½¿ç”¨å®½åº¦çš„åˆ—
+	ui.tableWidget->horizontalHeader()->setStretchLastSection(true);//å…³é”®
+	ui.tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);//ç¦æ­¢ç¼–è¾‘
+	//ui.tableWidget->setSelectionBehavior(QTableWidget::SelectRows);//ä¸€æ¬¡é€‰ä¸­ä¸€è¡Œ
+	ui.tableWidget->setRowCount(10);
+	ui.tableWidget->setColumnCount(10);//è®¾ç½®åˆ—
+	ui.tableWidget->setAlternatingRowColors(true);//è®¾ç½®éš”ä¸€è¡Œå˜ä¸€é¢œè‰²ï¼Œå³ï¼šä¸€ç°ä¸€ç™½Â Â 
+	ui.tableWidget->verticalHeader()->setVisible(false);
+	ui.tableWidget->setWindowFlags(Qt::FramelessWindowHint);  // å»é™¤æ ‡é¢˜æ  
+	for (int i = 0; i < ui.tableWidget->columnCount(); i++)//è®¾ç½®åˆ—è¡¨å¤´å†…å®¹
+	{
+		headerItem = new QTableWidgetItem(headerText.at(i));
+		ui.tableWidget->setHorizontalHeaderItem(i, headerItem);
 
+	}
+	QSqlQuery query;
+	int n_row = 0;//è·å–è¡Œ
+	ui.tableWidget->setRowCount(10 + n_row);//æ·»åŠ è¡Œ(å¿…é¡»)
+	QString str[9];
+	query.exec("SELECT TC.cnoid,TC.cname,TC.ctno,TC.ctname,Course.ctype,Course.credit,TC.ctime,TC.cnum,TC.csite from TC,Course WHERE Course.cno=TC.cno and TC.ctno=NULL");
+	for (int i = 0; query.next(); i++)
+	{
+		//å°†æŒ‰é’®æ”¾å…¥å•å…ƒæ ¼ä¸­
+		QPushButton* selectbtn = new QPushButton();
+		QPushButton* deletebtn = new QPushButton();
+		selectbtn->setText(QString::fromLocal8Bit("ä»»è¯¾"));
+		//deletebtn->setText(QString::fromLocal8Bit("é€€è¯¾"));
+		ui.tableWidget->setCellWidget(i, 9, selectbtn);//ç¬¬ä¹åˆ—è®¾ç½®æŒ‰é’®
+		//ui.tableWidget->setCellWidget(i, 10, deletebtn);//ç¬¬ååˆ—è®¾ç½®æŒ‰é’®
+
+		for (int j = 0; j < 8; j++)
+		{
+			ui.tableWidget->setItem(i, j, new QTableWidgetItem(query.value(j).toString()));
+			str[j] = ui.tableWidget->item(i, j)->text();//å–å‡ºå­—ç¬¦ä¸²
+		}
+		connect(selectbtn, &QPushButton::clicked, [=]() {
+			QString tno, tname;
+			QSqlQuery query;
+			QString sql_findtname = "select tnmae from Teacher where tno='" + tno_add + "'";
+			query.exec(sql_findtname);
+			while (query.next())
+			{
+				tname = query.value(0).toString();
+			}
+			QString sql_judge;
+			sql_judge = sql_judge = "update TC set tno='" + tno_add + "'and tname='" + tname + "'";
+			init_info();
+
+			});
+	}
+}
 addcourse::~addcourse()
 {
 }
-QString addcourse::receive_id_adacla(QString info)//½ÌÊ¦¹¤ºÅ½ÓÊÕ
+QString addcourse::receive_id_adacla(QString info)//æ•™å¸ˆå·¥å·æ¥æ”¶
 {
 	tno_add = info;
-	setitem();
+	//setitem();
 	return tno_add;
 }
-void addcourse::delc()
-{
-	QSqlQuery query;
-	QString sql_judge;
-	QString cno_if;
-	QString cno_exist = ui.lineEdit_cno->text();
-	
-	sql_judge = "select cno from Course where cno='" + cno_exist + "'and ctno='"+tno_add+"' ";
-	query.exec(sql_judge);
-	while (query.next())
-	{
-		cno_if = query.value(0).toString();
-	}
-	if (cno_if == NULL)
-		//¿Î³Ì´æÔÚ
-	{
-		QMessageBox::about(NULL, "´íÎó", "¿Î³ÌºÅ²»´æÔÚ");
-
-	}
-	else
-	{
-		QString cno, cname, ctype, ctno, ctname, credit, ctime, cnum, csite;
-		cno = ui.lineEdit_cno->text();
-		cname = ui.lineEdit_cname->text();
-		
-		QString sql;
-		QSqlQuery query;
-		sql = "delete from Course where cno='" + cno_if + "'and ctno='" + tno_add + "' ";
-		if (query.exec(sql))
-		{
-			QMessageBox msg;
-			msg.setText("ÄãÈ·¶¨ÒªÉ¾³ı¿Î³Ì£¿");
-			msg.setInformativeText("È·¶¨ºóÏµÍ³½«É¾³ı¸Ã¿Î³Ì£¬²¢ÇÒÉ¾³ıÑ§ÉúÏà¹ØµÄÑ¡¿ÎĞÅÏ¢");
-			msg.setStandardButtons(QMessageBox::Yes);
-			msg.setDefaultButton(QMessageBox::No);
-			int ret = msg.exec();
-			switch (ret) {
-			case QMessageBox::Yes:
-				this->close();
-				QMessageBox::about(NULL, "ÌáÊ¾", "É¾³ı³É¹¦");
-				break;//È·¶¨É¾³ı
-			default:
-				break;
-			}
-
-		}
-		else
-		{
-			QMessageBox::about(NULL, "´íÎó", "Êı¾İ¿âÎ´Ö´ĞĞ");
-		}
-
-
-	}
-
-
-
-}
-void addcourse::addc() {
-
-	QSqlQuery query;
-	QString sql_judge,cno_if;
-	QString cno_exist=ui.lineEdit_cno->text();
-	sql_judge = "select cno from Course where cno='" + cno_exist + "'and ctno='" + tno_add + "' ";
-	query.exec(sql_judge);
-	while (query.next())
-	{
-		cno_if = query.value(0).toString();
-	}
-	if (cno_if != NULL)
-		//¿Î³Ì´æÔÚ
-	{
-		QMessageBox::about(NULL, "ÌáÊ¾", "¿Î³ÌºÅÒÑ´æÔÚ");
-
-	}
-	else 
-	{
-		QString cno, cname, ctype, ctno, ctname, credit, ctime, cnum, csite;
-		cno = ui.lineEdit_cno->text();
-		cname = ui.lineEdit_cname->text();
-		ctype = ui.comboBox_ctype->currentText();
-		ctno = ui.lineEdit_tno->text();
-		ctname = ui.lineEdit_tname->text();
-		credit = ui.lineEdit_credit->text();
-		ctime = ui.lineEdit_ctime->text();
-		cnum = ui.lineEdit_cnum->text();
-		csite = ui.lineEdit_csite->text();
-		QString sql;
-		sql = "insert into Course values('" + cno + "','" + cname + "','" + ctype + "','" + ctno + "','" + ctname + "','" + credit + "','" + ctime + "','"+cnum+"','" + csite + "')";
-		if (query.exec(sql))
-		{
-			this->close();
-			QMessageBox::about(NULL, "ÌáÊ¾", "Ìí¼Ó³É¹¦");
-		}
-		else 
-		{
-			QMessageBox::about(NULL, "´íÎó", "ĞÅÏ¢´íÎó£¡ÇëÖØĞÂ¼ì²é");
-		}
-
-
-	}
-}
-void addcourse::setitem()
-{
-	ui.lineEdit_tno->setText(tno_add);
-	QString sql_tname_find, tname_if;
-	QSqlQuery query1;
-	sql_tname_find = "select tname from Teacher where tno='" + tno_add + "'";
-	query1.exec(sql_tname_find);
-	while (query1.next())
-	{
-		tname_if = query1.value(0).toString();
-	}
-	ui.lineEdit_tname->setText(tname_if);
-}
+//void addcourse::delc()
+//{
+//	QSqlQuery query;
+//	QString sql_judge;
+//	QString cno_if;
+//	QString cno_exist = ui.lineEdit_cno->text();
+//
+//	sql_judge = "select cno from Course where cno='" + cno_exist + "'";
+//	query.exec(sql_judge);
+//	while (query.next())
+//	{
+//		cno_if = query.value(0).toString();
+//	}
+//	if (cno_if == NULL)//è¯¾ç¨‹å­˜åœ¨
+//	{
+//		QMessageBox::about(NULL, "é”™è¯¯", "è¯¾ç¨‹å·ä¸å­˜åœ¨");
+//	}
+//	else
+//	{
+//		QString cno, cname, ctype, ctno, ctname, credit, ctime, cnum, csite;
+//		cno = ui.lineEdit_cno->text();
+//		cname = ui.lineEdit_cname->text();
+//
+//		QString sql;
+//		QSqlQuery query;
+//		sql = "delete from Course where cno='" + cno_if + "'and ctno='" + tno_add + "' ";
+//		if (query.exec(sql))
+//		{
+//			QMessageBox msg;
+//			msg.setText("ä½ ç¡®å®šè¦åˆ é™¤è¯¾ç¨‹ï¼Ÿ");
+//			msg.setInformativeText("ç¡®å®šåç³»ç»Ÿå°†åˆ é™¤è¯¥è¯¾ç¨‹ï¼Œå¹¶ä¸”åˆ é™¤å­¦ç”Ÿç›¸å…³çš„é€‰è¯¾ä¿¡æ¯");
+//			msg.setStandardButtons(QMessageBox::Yes);
+//			msg.setDefaultButton(QMessageBox::No);
+//			int ret = msg.exec();
+//			switch (ret) {
+//			case QMessageBox::Yes:
+//				this->close();
+//				QMessageBox::about(NULL, "æç¤º", "åˆ é™¤æˆåŠŸ");
+//				break;//ç¡®å®šåˆ é™¤
+//			default:
+//				break;
+//			}
+//
+//		}
+//		else
+//		{
+//			QMessageBox::about(NULL, "é”™è¯¯", "æ•°æ®åº“æœªæ‰§è¡Œ");
+//		}
+//
+//
+//	}
+//
+//
+//
+//}
+//void addcourse::addc() {
+//	QSqlQuery query;
+//
+//
+//}
+//void addcourse::addc() {
+//
+//	QSqlQuery query;
+//	QString cname, ctype, credit, ctime, cnum, csite;
+//	QString sql_judge, cno_if;
+//	QString cno_exist = ui.lineEdit_cno->text();
+//	sql_judge = "select cno,cname,ctype,credit from Course where cno='" + cno_exist + "'";
+//	query.exec(sql_judge);
+//	while (query.next())
+//	{
+//		cno_if = query.value(0).toString();
+//		cname = query.value(1).toString();
+//		ctype = query.value(2).toString();
+//		credit = query.value(3).toString();
+//	}
+//	if (cno_if != NULL)
+//		//è¯¾ç¨‹å­˜åœ¨
+//	{
+//		QMessageBox::about(NULL, "æç¤º", "è¯¾ç¨‹å·å·²å­˜åœ¨");
+//
+//	}
+//	else
+//	{
+//		QString cnoid = cno_if + tno_add;
+//
+//		//ç”±ç®¡ç†å‘˜å®šå¥½
+//		ctime = ui.lineEdit_ctime->text();
+//		cnum = ui.lineEdit_cnum->text();
+//		csite = ui.lineEdit_csite->text();
+//
+//
+//		QString sql;
+//		sql = "insert into Course values('" + cno + "','" + cname + "','" + ctype + "','" + ctno + "','" + ctname + "','" + credit + "','" + ctime + "','" + cnum + "','" + csite + "')";
+//		if (query.exec(sql))
+//		{
+//			this->close();
+//			QMessageBox::about(NULL, "æç¤º", "æ·»åŠ æˆåŠŸ");
+//		}
+//		else
+//		{
+//			QMessageBox::about(NULL, "é”™è¯¯", "ä¿¡æ¯é”™è¯¯ï¼è¯·é‡æ–°æ£€æŸ¥");
+//		}
+//
+//
+//	}
+//}
+//void addcourse::setitem()
+//{
+//	ui.lineEdit_tno->setText(tno_add);
+//	QString sql_tname_find, tname_if;
+//	QSqlQuery query1;
+//	sql_tname_find = "select tname from Teacher where tno='" + tno_add + "'";
+//	query1.exec(sql_tname_find);
+//	while (query1.next())
+//	{
+//		tname_if = query1.value(0).toString();
+//	}
+//	ui.lineEdit_tname->setText(tname_if);
+//}

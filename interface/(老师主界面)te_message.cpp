@@ -1,12 +1,12 @@
 #include "te_message.h"
 #include<QSqlQuery>
 
-te_message::te_message(QWidget *parent)
+te_message::te_message(QWidget* parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
 	this->setFixedSize(1395, 900);
-	
+
 	//connect(ui.myclassbtn, &QPushButton::clicked, [=]() {
 	//	personalclass *myclass;
 	//	myclass = new personalclass;
@@ -25,44 +25,46 @@ te_message::te_message(QWidget *parent)
 		person_te->receive_input_per_te(tno_te);
 		person_te->show();
 
-	});//加载个人信息
+		});//加载个人信息
 
 	connect(ui.exitsystembtn_2, &QPushButton::clicked, [=]() {
 		this->close();
 
-	});
+		});
 	connect(ui.stu_infobtn, &QPushButton::clicked, [=]() {
 		searchtno();
-		mystudent *mystu = new mystudent;
-		mystu->show();
-		mystu->receive_id_mystu(tno_te);//查看我的学生
-	});
-	
+		te_myclass_stu* myclass = new te_myclass_stu(tno_te);
+		myclass->show();
+		//mystudent *mystu = new mystudent;
+		//mystu->show();
+		//mystu->receive_id_mystu(tno_te);//查看我的学生
+		});
+
 	connect(ui.myclassbtn_2, &QPushButton::clicked, [=]() {
 		searchtno();
-		te_myclass *mycl= new te_myclass;
+		te_myclass* mycl = new te_myclass;
 		mycl->show();
 		mycl->receive_id_mycla(tno_te);//查看我的课程
-	});
-	
+		});
+
 	connect(ui.chooseclassbtn_2, &QPushButton::clicked, [=]() {
 		searchtno();
-		addcourse *addcla = new addcourse;
+		addcourse* addcla = new addcourse;
 		addcla->show();
 		addcla->receive_id_adacla(tno_te);//增加课程
-	});
+		});
 	connect(ui.gradebtn_2, &QPushButton::clicked, [=]() {
 		searchtno();
-		te_grantgrade *grant = new te_grantgrade;
+		te_grantgrade* grant = new te_grantgrade;
 		grant->show();
 		grant->receive_id_grade(tno_te);//授予分数
-	});
+		});
 	connect(ui.seeroombtn_2, &QPushButton::clicked, [=]() {
 		searchtno();
-		classroom *room = new classroom;
+		classroom* room = new classroom;
 		room->show();
-	});
-	
+		});
+
 
 }
 

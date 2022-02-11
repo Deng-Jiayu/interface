@@ -6,17 +6,17 @@
 #ifdef WIN32  
 #pragma execution_character_set("utf-8")  
 #endif
-grantpoint::grantpoint(QWidget *parent)
+grantpoint::grantpoint(QWidget* parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
 	connect(ui.ensurebtn, &QPushButton::clicked, [=]() {
 		givepoint();
-	});
+		});
 	connect(ui.exitbtn, &QPushButton::clicked, [=]() {
 		this->close();
 
-	});
+		});
 }
 
 grantpoint::~grantpoint()
@@ -37,13 +37,13 @@ QString grantpoint::receive_cno(QString info)//课程号接收
 }
 QString grantpoint::grade_point(QString gd)//绩点计算公式
 {
-	if (gd==NULL)
+	if (gd == NULL)
 		QMessageBox::about(NULL, "错误", "无分数");
-	else if (gd >= "90"|| gd=="A")
+	else if (gd >= "90" || gd == "A")
 	{
 		pointvalue = "4.0";
 	}
-	else if (gd >= "85"|| gd == "A-")
+	else if (gd >= "85" || gd == "A-")
 	{
 		pointvalue = "3.7";
 	}
@@ -51,7 +51,7 @@ QString grantpoint::grade_point(QString gd)//绩点计算公式
 	{
 		pointvalue = "3.3";
 	}
-	else if (gd >= "78 "|| gd == "B")
+	else if (gd >= "78 " || gd == "B")
 	{
 		pointvalue = "3.0";
 	}
@@ -87,7 +87,7 @@ QString grantpoint::grade_point(QString gd)//绩点计算公式
 }
 void grantpoint::givepoint()
 {
-	QString grade_exist,grade_te;
+	QString grade_exist, grade_te;
 	grade_te = ui.lineEdit->text();
 
 	QSqlQuery query0;
@@ -98,7 +98,7 @@ void grantpoint::givepoint()
 	{
 		grade_exist = query0.value(0).toString();
 	}
-	if (grade_exist !=NULL)
+	if (grade_exist != NULL)
 	{
 		QMessageBox::about(NULL, "错误", "该学生已有成绩");
 	}
@@ -120,7 +120,7 @@ void grantpoint::givepoint()
 		{
 			QMessageBox::about(NULL, "错误", "数据库执行错误");
 		}
-		
+
 	}
 }
 

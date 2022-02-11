@@ -67,7 +67,7 @@ void location::paintEvent(QPaintEvent*)
 	brush.setStyle(Qt::Dense1Pattern);
 	painter.setBrush(brush);
 
-	QFont font("宋体", 20, QFont::Bold);
+	QFont font("宋体", 16, QFont::Bold);
 	painter.setFont(font);
 
 	//// 画线
