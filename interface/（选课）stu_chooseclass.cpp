@@ -28,12 +28,6 @@ QString stu_chooseclass::receive_input_per(QString info)//学生学号接收
 	initTableWidget();
 	return sno_class;
 }
-//void stu_chooseclass::showinfo_class()
-//{
-//	
-//
-//
-//}
 
 stu_chooseclass::~stu_chooseclass()
 {
@@ -54,12 +48,11 @@ void stu_chooseclass::initTableWidget()
 	ui.tableWidget->horizontalHeader()->setStretchLastSection(true);//关键
 	ui.tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);//禁止编辑
 	//ui.tableWidget->setSelectionBehavior(QTableWidget::SelectRows);//一次选中一行
-	ui.tableWidget->setRowCount(10);
+	ui.tableWidget->setRowCount(20);
 	ui.tableWidget->setColumnCount(11);//设置列
 	ui.tableWidget->setAlternatingRowColors(true);//设置隔一行变一颜色，即：一灰一白  
 	ui.tableWidget->verticalHeader()->setVisible(false);
 	ui.tableWidget->setWindowFlags(Qt::FramelessWindowHint);  // 去除标题栏 
-
 
 
 	for (int i = 0; i < ui.tableWidget->columnCount(); i++)//设置列表头内容
@@ -72,9 +65,9 @@ void stu_chooseclass::initTableWidget()
 
 	QSqlQuery query;
 	int n_row = 0;//获取行
-	ui.tableWidget->setRowCount(10 + n_row);//添加行(必须)
-	QString str[9];
-	query.exec("SELECT TC.cnoid,TC.cname,TC.ctno,TC.ctname,Course.ctype,Course.credit,TC.ctime,TC.cnum,TC.csite from TC,Course WHERE Course.cno=TC.cno");
+	ui.tableWidget->setRowCount(20 + n_row);//添加行(必须)
+	QString str[10];
+	query.exec("SELECT TC.cnoid,TC.cname,TC.ctno,TC.ctname,Course.ctype,Course.credit,TC.ctime,TC.cnum,TC.csite from TC,Course WHERE Course.cno=TC.cno and TC.ctno is NOT NULL and cnoid not in (select cnoid from myclass where sno='" + sno_class + "')");
 	for (int i = 0; query.next(); i++)
 	{
 		//将按钮放入单元格中
@@ -90,23 +83,22 @@ void stu_chooseclass::initTableWidget()
 			str[j] = ui.tableWidget->item(i, j)->text();//取出字符串
 		}
 		connect(selectbtn, &QPushButton::clicked, [=]() {
-			QString cnoid, cname, credit, tno, tname;
+			selectbtn->setStyleSheet("background-color: rgb(70,130,180);");
+			selectbtn->setText(QString::fromLocal8Bit("已选"));
+			QString cnoid, sno;
 			QString sql_judge;
 			QString num = str[0];
-			sql_judge = "select cnoid,cname,tno,tname,credit from myclass where cnoid='" + num + "'and sno='" + sno_class + "'";
+			sql_judge = "select cnoid,sno from myclass where cnoid='" + num + "'and sno='" + sno_class + "'";
 			QSqlQuery query1;
 			query1.exec(sql_judge);
 			while (query1.next())
 			{
 				cnoid = query1.value(0).toString();
-				cname = query1.value(1).toString();
-				tno = query1.value(2).toString();
-				tname = query1.value(3).toString();
-				credit = query1.value(4).toString();
+				sno = query1.value(1).toString();
 			}
 			if (cnoid == NULL)
 			{
-				QString sql = "insert into myclass values('" + sno_class + "','" + str[0] + "','" + str[1] + "','" + str[2] + "','" + str[3] + "','" + str[4] + "','" + str[5] + "','null','null')";
+				QString sql = "insert into myclass values('" + sno_class + "','" + str[0] + "',NULL,NULL)";
 				QSqlQuery query2;
 				//query2.prepare(sql);
 				if (!query2.exec(sql))
@@ -123,8 +115,8 @@ void stu_chooseclass::initTableWidget()
 			});
 
 		connect(deletebtn, &QPushButton::clicked, [=]() {
-
-
+			selectbtn->setText(QString::fromLocal8Bit("选课"));
+			selectbtn->setStyleSheet("bold");
 			QString sql_look = "select cnoid from myclass where cnoid='" + str[0] + "' and sno='" + sno_class + "'";
 			QSqlQuery query4;
 			query4.exec(sql_look);
@@ -154,10 +146,7 @@ void stu_chooseclass::initTableWidget()
 
 			});
 	}
-	ui.tableWidget->setRowCount(10 + n_row);//添加行(必须)
-
-
-
+	ui.tableWidget->setRowCount(20 + n_row);//添加行(必须)
 }
 void stu_chooseclass::tbSearchByText(QString text)//搜索功能
 {

@@ -11,6 +11,7 @@ check_identity::check_identity(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
+	ui.lineEdit->setPlaceholderText(QStringLiteral("请填写工号或学号"));
 	connect(ui.pushButton, &QPushButton::clicked, [=]() {
 		
 		if(idwho==1)//学生身份

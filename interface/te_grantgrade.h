@@ -9,7 +9,7 @@ class te_grantgrade : public QWidget
 	Q_OBJECT
 
 public:
-	te_grantgrade(QWidget *parent = Q_NULLPTR);
+	te_grantgrade(QWidget* parent = Q_NULLPTR);
 	~te_grantgrade();
 	QString receive_id_grade(QString info);
 public slots:
@@ -17,6 +17,8 @@ public slots:
 	void te_showstu_class();
 protected:
 	//void countgrade();
+	void tbSearchByText(QString text);
+	void grade_rank();
 
 private:
 	Ui::te_grantgrade ui;

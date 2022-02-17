@@ -58,9 +58,6 @@
     <ClCompile Include="chooseclass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="grade.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="vssql.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -84,9 +81,6 @@
     </ClCompile>
     <ClCompile Include="（管理员主页面）message.cpp">
       <Filter>Source Files\管理员</Filter>
-    </ClCompile>
-    <ClCompile Include="(课程给分)grantpoint.cpp">
-      <Filter>Source Files\老师</Filter>
     </ClCompile>
     <ClCompile Include="（课程信息）admin_classinfo.cpp">
       <Filter>Source Files\管理员</Filter>
@@ -112,9 +106,6 @@
     <ClCompile Include="admin_updateclassinfo.cpp">
       <Filter>Source Files\管理员</Filter>
     </ClCompile>
-    <ClCompile Include="te_grantgrade.cpp">
-      <Filter>Source Files\老师</Filter>
-    </ClCompile>
     <ClCompile Include="（绑定身份）check_identity.cpp">
       <Filter>Source Files\公用界面</Filter>
     </ClCompile>
@@ -127,20 +118,32 @@
     <ClCompile Include="classroom.cpp">
       <Filter>Source Files\公用界面</Filter>
     </ClCompile>
-    <ClCompile Include="（选课）stu_chooseclass.cpp">
+    <ClCompile Include="location.cpp">
+      <Filter>Source Files\公用界面</Filter>
+    </ClCompile>
+    <ClCompile Include="%28添课%29addcourse.cpp">
+      <Filter>Source Files\老师</Filter>
+    </ClCompile>
+    <ClCompile Include="te_grantgrade.cpp">
       <Filter>Source Files\a正在使用</Filter>
     </ClCompile>
     <ClCompile Include="te_myclass_stu.cpp">
       <Filter>Source Files\a正在使用</Filter>
     </ClCompile>
-    <ClCompile Include="location.cpp">
-      <Filter>Source Files\公用界面</Filter>
+    <ClCompile Include="grade.cpp">
+      <Filter>Source Files\a正在使用</Filter>
+    </ClCompile>
+    <ClCompile Include="%28查看绩点%29showmypoint.cpp">
+      <Filter>Source Files\学生</Filter>
+    </ClCompile>
+    <ClCompile Include="(课程给分)grantpoint.cpp">
+      <Filter>Source Files\老师</Filter>
+    </ClCompile>
+    <ClCompile Include="（选课）stu_chooseclass.cpp">
+      <Filter>Source Files\学生</Filter>
     </ClCompile>
     <ClCompile Include="(学生信息)mystudent.cpp">
-      <Filter>Source Files\a正在使用</Filter>
-    </ClCompile>
-    <ClCompile Include="(添课与删课)addcourse.cpp">
-      <Filter>Source Files\a正在使用</Filter>
+      <Filter>Source Files\老师</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -228,6 +231,9 @@
     <QtUic Include="te_myclass_stu.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="showmypoint.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="admin_change.h">
@@ -281,9 +287,6 @@
     <QtMoc Include="stu_message.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="te_grantgrade.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="te_message.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -299,17 +302,23 @@
     <QtMoc Include="updatemycode.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="te_myclass_stu.h">
-      <Filter>Source Files\a正在使用</Filter>
-    </QtMoc>
     <QtMoc Include="location.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="mystudent.h">
-      <Filter>Source Files\a正在使用</Filter>
+    <QtMoc Include="te_myclass_stu.h">
+      <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="addcourse.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="te_grantgrade.h">
       <Filter>Source Files\a正在使用</Filter>
+    </QtMoc>
+    <QtMoc Include="showmypoint.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="mystudent.h">
+      <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

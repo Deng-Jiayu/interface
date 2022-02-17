@@ -101,7 +101,7 @@
     <ClCompile Include="(我的课程)te_myclass.cpp" />
     <ClCompile Include="(注册)regist.cpp" />
     <ClCompile Include="(添删)admin_changeclass.cpp" />
-    <ClCompile Include="(添课与删课)addcourse.cpp" />
+    <ClCompile Include="%28添课%29addcourse.cpp" />
     <ClCompile Include="(老师个人信息)te_personalinfo.cpp" />
     <ClCompile Include="(老师主界面)te_message.cpp" />
     <ClCompile Include="(老师修改密码)updatecode_te.cpp" />
@@ -111,6 +111,7 @@
     <ClCompile Include="classroom.cpp" />
     <ClCompile Include="grade.cpp" />
     <ClCompile Include="location.cpp" />
+    <ClCompile Include="%28查看绩点%29showmypoint.cpp" />
     <ClCompile Include="te_grantgrade.cpp" />
     <ClCompile Include="te_myclass_stu.cpp" />
     <ClCompile Include="vssql.cpp" />
@@ -146,6 +147,7 @@
     <QtUic Include="personalclass.ui" />
     <QtUic Include="personalinfo.ui" />
     <QtUic Include="regist.ui" />
+    <QtUic Include="showmypoint.ui" />
     <QtUic Include="stu_chooseclass.ui" />
     <QtUic Include="stu_info.ui" />
     <QtUic Include="stu_message.ui" />
@@ -176,6 +178,7 @@
     <ClInclude Include="admin_updateclassinfo.h" />
     <QtMoc Include="location.h" />
     <QtMoc Include="te_myclass_stu.h" />
+    <QtMoc Include="showmypoint.h" />
     <ClInclude Include="vssql.h" />
     <QtMoc Include="updatemycode.h" />
     <QtMoc Include="updatecode_te.h" />

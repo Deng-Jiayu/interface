@@ -31,16 +31,9 @@
        <widget class="QLineEdit" name="lineEdit"/>
       </item>
       <item>
-       <widget class="QPushButton" name="updatebtn">
-        <property name="text">
-         <string>刷新</string>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QPushButton" name="insertbtn">
         <property name="text">
-         <string>添加/删除课程</string>
+         <string>添加课程</string>
         </property>
        </widget>
       </item>

@@ -126,8 +126,8 @@ background-color: rgb(113, 110, 119);</string>
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>166</width>
-           <height>287</height>
+           <width>98</width>
+           <height>70</height>
           </rect>
          </property>
          <attribute name="label">
@@ -155,8 +155,8 @@ background-color: rgb(113, 110, 119);</string>
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>124</width>
-           <height>287</height>
+           <width>122</width>
+           <height>258</height>
           </rect>
          </property>
          <attribute name="label">
@@ -166,7 +166,7 @@ background-color: rgb(113, 110, 119);</string>
           <item>
            <widget class="QPushButton" name="chooseclassbtn_2">
             <property name="text">
-             <string>授课/退课</string>
+             <string>选择授课</string>
             </property>
            </widget>
           </item>
@@ -184,8 +184,8 @@ background-color: rgb(113, 110, 119);</string>
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>166</width>
-           <height>287</height>
+           <width>98</width>
+           <height>41</height>
           </rect>
          </property>
          <attribute name="label">
@@ -206,8 +206,8 @@ background-color: rgb(113, 110, 119);</string>
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>166</width>
-           <height>287</height>
+           <width>98</width>
+           <height>41</height>
           </rect>
          </property>
          <attribute name="label">

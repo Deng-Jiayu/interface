@@ -26,6 +26,15 @@ QString grantpoint::receive_sno(QString info)
 {
 	sno_point = info;
 	ui.lineEdit_sno->setText(sno_point);
+	QString sql, sname;
+	sql = "select sname from Student where sno='" + sno_point + "'";
+	QSqlQuery query;
+	query.exec(sql);
+	while (query.next())
+	{
+		sname = query.value(0).toString();
+	}
+	ui.lineEdit_2->setText(sname);
 	return sno_point;
 }
 
@@ -37,62 +46,116 @@ QString grantpoint::receive_cno(QString info)//课程号接收
 }
 QString grantpoint::grade_point(QString gd)//绩点计算公式
 {
-	if (gd == NULL)
-		QMessageBox::about(NULL, "错误", "无分数");
-	else if (gd >= "90" || gd == "A")
+	if (ui.checkBox->isChecked())
 	{
-		pointvalue = "4.0";
+		if (gd == NULL)
+			QMessageBox::about(NULL, "错误", "无分数");
+		else if (gd == "A")
+		{
+			pointvalue = "4.0";
+		}
+		else if (gd == "A-")
+		{
+			pointvalue = "3.7";
+		}
+		else if (gd == "B+")
+		{
+			pointvalue = "3.3";
+		}
+		else if (gd == "B")
+		{
+			pointvalue = "3.0";
+		}
+		else if (gd == "B-")
+		{
+			pointvalue = "2.7";
+		}
+		else if (gd == "C+")
+		{
+			pointvalue = "2.3";
+		}
+		else if (gd == "C")
+		{
+			pointvalue = "2.0";
+		}
+		else if (gd == "C-")
+		{
+			pointvalue = "1.7";
+		}
+		else if (gd == "D")
+		{
+			pointvalue = "1.3";
+		}
+		else if (gd == "补考D")
+		{
+			pointvalue = "1.0";
+		}
+		else if (gd == "F")
+		{
+			pointvalue = '0';
+		}
+		return pointvalue;
 	}
-	else if (gd >= "85" || gd == "A-")
+	else
 	{
-		pointvalue = "3.7";
+		if (gd == NULL)
+			QMessageBox::about(NULL, "错误", "无分数");
+		else if (gd >= "90")
+		{
+			pointvalue = "4.0";
+		}
+		else if (gd >= "85")
+		{
+			pointvalue = "3.7";
+		}
+		else if (gd >= "82")
+		{
+			pointvalue = "3.3";
+		}
+		else if (gd >= "78 ")
+		{
+			pointvalue = "3.0";
+		}
+		else if (gd >= "75")
+		{
+			pointvalue = "2.7";
+		}
+		else if (gd >= "71")
+		{
+			pointvalue = "2.3";
+		}
+		else if (gd >= "66")
+		{
+			pointvalue = "2.0";
+		}
+		else if (gd >= "62")
+		{
+			pointvalue = "1.7";
+		}
+		else if (gd >= "60")
+		{
+			pointvalue = "1.3";
+		}
+		else if (gd == "补考60")
+		{
+			pointvalue = "1.0";
+		}
+		else if (gd < "60" || gd == "F")
+		{
+			pointvalue = '0';
+		}
+		return pointvalue;
 	}
-	else if (gd >= "82" || gd == "B+")
-	{
-		pointvalue = "3.3";
-	}
-	else if (gd >= "78 " || gd == "B")
-	{
-		pointvalue = "3.0";
-	}
-	else if (gd >= "75" || gd == "B-")
-	{
-		pointvalue = "2.7";
-	}
-	else if (gd >= "71" || gd == "C+")
-	{
-		pointvalue = "2.3";
-	}
-	else if (gd >= "66" || gd == "C")
-	{
-		pointvalue = "2.0";
-	}
-	else if (gd >= "62" || gd == "C-")
-	{
-		pointvalue = "1.7";
-	}
-	else if (gd >= "60" || gd == "D")
-	{
-		pointvalue = "1.3";
-	}
-	else if (gd == "补考60" || gd == "D")
-	{
-		pointvalue = "1.0";
-	}
-	else if (gd < "60" || gd == "F")
-	{
-		pointvalue = '0';
-	}
-	return pointvalue;
 }
 void grantpoint::givepoint()
 {
 	QString grade_exist, grade_te;
 	grade_te = ui.lineEdit->text();
 
+
 	QSqlQuery query0;
 	QString sql0;
-	sql0 = "select grade from student where sno='" + sno_point + "'and cno='" + cno_point + "'";
+	sql0 = "select grade from myclass where sno='" + sno_point + "'and cnoid='" + cno_point + "'";
 	query0.exec(sql0);
 	while (query0.next())
 	{
@@ -107,9 +170,9 @@ void grantpoint::givepoint()
 		student_gradepoint = grade_point(grade_te);
 		QSqlQuery query_update, query_update2;
 		QString sql_update;
-		sql_update = "update myclass set grade='" + grade_te + "' where sno='" + sno_point + "'and cno = '" + cno_point + "'";
+		sql_update = "update myclass set grade='" + grade_te + "' where sno='" + sno_point + "'and cnoid = '" + cno_point + "'";
 		QString sql_update_student_gradepoint;
-		sql_update_student_gradepoint = "update myclass set GPA='" + student_gradepoint + "' where sno='" + sno_point + "'and cno = '" + cno_point + "'";
+		sql_update_student_gradepoint = "update myclass set GPA='" + student_gradepoint + "' where sno='" + sno_point + "'and cnoid = '" + cno_point + "'";
 
 		if (query_update.exec(sql_update) && query_update.exec(sql_update_student_gradepoint))
 		{
@@ -123,4 +186,3 @@ void grantpoint::givepoint()
 
 	}
 }
-

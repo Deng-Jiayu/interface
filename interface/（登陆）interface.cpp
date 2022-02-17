@@ -11,7 +11,7 @@
 int idwho;
 
 
-interface::interface(QWidget *parent)
+interface::interface(QWidget* parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
@@ -21,15 +21,15 @@ interface::interface(QWidget *parent)
 	connect(ui.exitbtn, &QPushButton::clicked, [=]() {
 		this->close();
 
-	});//退出按钮
+		});//退出按钮
 
 	connect(ui.registerbtn, &QPushButton::clicked, [=]() {
 		reg = new regist;
 		reg->show();
 
-	});//注册按钮
-	
-	
+		});//注册按钮
+
+
 
 
 
@@ -46,12 +46,12 @@ void interface::on_pushButton_login_clicked()
 	{
 		QMessageBox::information(this, "提示", "请输入用户名");
 	}
-	else 
+	else
 	{
 		if (ui.checkBox_admin->isChecked()) {
-			if (inputName == "admin"&&inputPassword == "admin")
+			if (inputName == "admin" && inputPassword == "admin")
 			{
-			
+
 				QMessageBox::about(NULL, "提示", "管理员登陆成功");
 				this->close();
 				mess = new message;
@@ -81,7 +81,7 @@ void interface::on_pushButton_login_clicked()
 
 
 					QMessageBox::about(NULL, "提示", "老师登录成功");
-					QString sql_te,tno;
+					QString sql_te, tno;
 					sql_te = "select tno from load_te where name='" + inputName + "'";
 					query.exec(sql_te);
 					while (query.next())
@@ -91,7 +91,7 @@ void interface::on_pushButton_login_clicked()
 					if (tno != NULL)
 					{
 						this->close();
-						te_message *te_mess = new te_message;
+						te_message* te_mess = new te_message;
 						te_mess->show();
 						te_mess->receive_input(inputName);
 						return;
@@ -104,15 +104,15 @@ void interface::on_pushButton_login_clicked()
 						check_id->QWidget::show();
 						check_id->receive_input(inputName);
 						connect(check_id, SIGNAL(send_id(QString)), this, SLOT(received_id(QString)));
-						QMessageBox::about(NULL, "提示", "绑定成功");
+						//QMessageBox::about(NULL, "提示", "绑定成功");
 
-						if (tno != 0)
+						/*if (tno != 0)
 						this->close();
 						te_message *te_mess = NULL;
 						te_mess=new te_message;
 						te_mess->show();
 						te_mess->receive_input(inputName);
-						return;
+						return;*/
 
 					}
 
@@ -123,7 +123,7 @@ void interface::on_pushButton_login_clicked()
 
 				}
 			}
-			else if(ui.checkBox_stu->isChecked())//学生登陆
+			else if (ui.checkBox_stu->isChecked())//学生登陆
 			{
 				query.exec(QString("SELECT password from load where name='%1'")
 					.arg(inputName));
@@ -136,7 +136,7 @@ void interface::on_pushButton_login_clicked()
 				if (inputPassword == realpassword) {
 					QMessageBox::about(NULL, "提示", "学生登录成功");
 					QSqlQuery query;
-					QString sql_stu,sno;
+					QString sql_stu, sno;
 					sql_stu = "select sno from load where name='" + inputName + "'";
 					query.exec(sql_stu);
 					while (query.next())
@@ -151,7 +151,7 @@ void interface::on_pushButton_login_clicked()
 						stu_mess->receive_input(inputName);
 						return;
 					}
-					else 
+					else
 					{
 						idwho = 1;
 						check_id = new check_identity;
@@ -174,15 +174,15 @@ void interface::on_pushButton_login_clicked()
 
 				}
 			}
-			else if(!ui.checkBox_stu->isChecked()&&!ui.checkBox_te->isChecked())
+			else if (!ui.checkBox_stu->isChecked() && !ui.checkBox_te->isChecked())
 			{
 				QMessageBox::about(NULL, "提示", "请选择身份");
 			}
 
-		}	
-		
+		}
+
 	}
-	
+
 }
 
 void interface::received_id(QString info)

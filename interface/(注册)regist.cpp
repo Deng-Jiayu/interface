@@ -5,17 +5,17 @@
 #include<qcombobox.h>
 #include<qpushbutton.h>
 
-regist::regist(QWidget *parent)
+regist::regist(QWidget* parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
 	this->setFixedSize(540, 400);
 	connect(ui.pushButton, &QPushButton::clicked, [=]() {
 		userregister();
-	});
+		});
 	connect(ui.pushButton_2, &QPushButton::clicked, [=]() {
 		this->close();
-	});
+		});
 }
 
 regist::~regist()
@@ -55,13 +55,13 @@ void regist::userregister()
 				}
 				else
 				{
-					if (ui.lineEdit_password == ui.lineEdit_password2)
+					if (ui.lineEdit_password->text() == ui.lineEdit_password2->text())
 					{
 						QSqlQuery query;
 						QString inputPassword;
 						inputPassword = ui.lineEdit_password->text();
 						QString sql;
-						sql= "insert into load_te(name,password) values('" + inputName + "','" + inputPassword + "')";
+						sql = "insert into load_te(name,password) values('" + inputName + "','" + inputPassword + "')";
 						query.exec(sql);
 						QMessageBox::about(NULL, "提示", "用户名注册成功");
 						this->close();
@@ -99,13 +99,13 @@ void regist::userregister()
 				}
 				else
 				{
-					if (ui.lineEdit_password == ui.lineEdit_password2)
+					if (ui.lineEdit_password->text() == ui.lineEdit_password2->text())
 					{
 						QSqlQuery query;
 						QString inputPassword;
 						inputPassword = ui.lineEdit_password->text();
 						QString sql;
-						sql= "insert into load(name,password) values('" + inputName + "','" + inputPassword + "')";
+						sql = "insert into load(name,password) values('" + inputName + "','" + inputPassword + "')";
 						query.exec(sql);
 						QMessageBox::about(NULL, "提示", "用户名注册成功");
 						this->close();
@@ -123,10 +123,10 @@ void regist::userregister()
 		}
 	}
 }
-		
+
 bool regist::if_null()
 {
-	if (ui.lineEdit_password != NULL && ui.lineEdit_password2 != NULL)
+	if (ui.lineEdit_password->text() != NULL && ui.lineEdit_password2->text() != NULL)
 		return true;
 	else
 		return false;

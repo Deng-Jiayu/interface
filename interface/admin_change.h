@@ -9,11 +9,8 @@ class admin_change : public QWidget
 	Q_OBJECT
 
 public:
-	admin_change(QWidget *parent = Q_NULLPTR);
+	admin_change(QWidget* parent = Q_NULLPTR);
 	~admin_change();
-
-signals:
-	
 
 private slots:
 	//void on_pushButton_exit_clicked();

@@ -1,5 +1,6 @@
 #include "te_message.h"
 #include<QSqlQuery>
+int mingdan;
 
 te_message::te_message(QWidget* parent)
 	: QWidget(parent)
@@ -33,8 +34,10 @@ te_message::te_message(QWidget* parent)
 		});
 	connect(ui.stu_infobtn, &QPushButton::clicked, [=]() {
 		searchtno();
+		mingdan = 1;
 		te_myclass_stu* myclass = new te_myclass_stu(tno_te);
 		myclass->show();
+
 		//mystudent *mystu = new mystudent;
 		//mystu->show();
 		//mystu->receive_id_mystu(tno_te);//查看我的学生
@@ -55,9 +58,9 @@ te_message::te_message(QWidget* parent)
 		});
 	connect(ui.gradebtn_2, &QPushButton::clicked, [=]() {
 		searchtno();
-		te_grantgrade* grant = new te_grantgrade;
-		grant->show();
-		grant->receive_id_grade(tno_te);//授予分数
+		mingdan = 2;
+		te_myclass_stu* myclass = new te_myclass_stu(tno_te);
+		myclass->show();
 		});
 	connect(ui.seeroombtn_2, &QPushButton::clicked, [=]() {
 		searchtno();

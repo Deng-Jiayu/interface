@@ -19,10 +19,6 @@ te_myclass::te_myclass(QWidget* parent)
 		addcla->show();
 		addcla->receive_id_adacla(tno_mycla);//增加课程
 		});
-	connect(ui.updatebtn, &QPushButton::clicked, [=]() {
-		myallclass();
-
-		});
 }
 
 te_myclass::~te_myclass()

@@ -30,7 +30,7 @@ void classroom::initTableWidget()
 {
 	QTableWidgetItem* headerItem = NULL;
 	QStringList headerText;
-	headerText << QString::fromLocal8Bit("课程号") << QString::fromLocal8Bit("课程名") << QString::fromLocal8Bit("课程类型")
+	headerText << QString::fromLocal8Bit("课程id") << QString::fromLocal8Bit("课程名") << QString::fromLocal8Bit("课程类型")
 		<< QString::fromLocal8Bit("教师工号") << QString::fromLocal8Bit("教师姓名") << QString::fromLocal8Bit("学分") << QString::fromLocal8Bit("上课时间")
 		<< QString::fromLocal8Bit("名额") << QString::fromLocal8Bit("地点") << QString::fromLocal8Bit("教室");
 
@@ -41,7 +41,7 @@ void classroom::initTableWidget()
 	ui.tableWidget->horizontalHeader()->setStretchLastSection(true);//关键
 	ui.tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);//禁止编辑
 	ui.tableWidget->setSelectionBehavior(QTableWidget::SelectRows);//一次选中一行
-	ui.tableWidget->setRowCount(10);
+	ui.tableWidget->setRowCount(15);
 	ui.tableWidget->setColumnCount(10);//设置列
 	ui.tableWidget->setAlternatingRowColors(true);//设置隔一行变一颜色，即：一灰一白  
 	ui.tableWidget->verticalHeader()->setVisible(false);
@@ -56,8 +56,8 @@ void classroom::initTableWidget()
 
 	QSqlQuery query;
 	int n_row = 0;//获取行
-	QString str[9];
-	query.exec(QString::fromLocal8Bit("SELECT cno,cname,ctype,ctno,ctname,credit,ctime,cnum,csite from Course"));
+	QString str[10];
+	query.exec(QString::fromLocal8Bit("SELECT TC.cnoid,TC.cname,Course.ctype,TC.ctno,TC.ctname,Course.credit,TC.ctime,TC.cnum,TC.csite from TC,Course WHERE Course.cno=TC.cno and TC.ctno is not NULL"));
 	for (int i = 0; query.next(); i++)
 	{
 		//将按钮放入单元格中
@@ -65,7 +65,7 @@ void classroom::initTableWidget()
 		crbtn->setText(QString::fromLocal8Bit("查看位置"));
 		ui.tableWidget->setCellWidget(i, 9, crbtn);//第9列设置按钮
 
-		for (int j = 0; j < 9; j++)
+		for (int j = 0; j < 10; j++)
 		{
 			ui.tableWidget->setItem(i, j, new QTableWidgetItem(query.value(j).toString()));
 			str[j] = ui.tableWidget->item(i, j)->text();//取出字符串
@@ -82,7 +82,7 @@ void classroom::initTableWidget()
 
 
 	}
-	ui.tableWidget->setRowCount(10 + n_row);//添加行(必须)
+	ui.tableWidget->setRowCount(15 + n_row);//添加行(必须)
 
 }
 

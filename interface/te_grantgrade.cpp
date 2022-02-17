@@ -3,13 +3,23 @@
 #include<qtablewidget.h>
 #include<qdebug.h>
 #include<qpushbutton.h>
+#include<QSqlQuery>
+#include<QSqlQueryModel>
 
-te_grantgrade::te_grantgrade(QWidget *parent)
+te_grantgrade::te_grantgrade(QWidget* parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
 	this->setFixedSize(1658, 1088);
-	
+	connect(ui.lineEdit, &QLineEdit::textChanged, [=]() {
+		tbSearchByText(ui.lineEdit->text());
+		});
+	connect(ui.pushButton, &QPushButton::clicked, [=]() {
+		this->close();
+		});
+	connect(ui.updatebtn, &QPushButton::clicked, [=]() {
+		te_showstu_class();
+		});
 
 
 }
@@ -23,11 +33,18 @@ QString te_grantgrade::receive_id_grade(QString info)//教师工号接收
 	te_showstu_class();
 	return tno_grade;
 }
+//void te_grantgrade::grade_rank()
+//{
+//	QSqlQuery query;
+//	QString sql;
+//	sql = "select myclass.cnoid,TC.cname,myclass.sno,Student.sname,Course.credit,myclass.grade,myclass.GPA from Student,TC,myclass,Course where Course.cno=TC.cno and Student.sno=myclass.sno and TC.cnoid=myclass.cnoid and ctno='" + tno_grade + "'and Student.sno=myclass.sno order by myclass.grade desc";
+//
+//}
 void te_grantgrade::te_showstu_class()
 {
-	QTableWidgetItem *headerItem = NULL;
+	QTableWidgetItem* headerItem = NULL;
 	QStringList headerText;
-	headerText << QString::fromLocal8Bit("课程号") << QString::fromLocal8Bit("课程名")
+	headerText << QString::fromLocal8Bit("课程id") << QString::fromLocal8Bit("课程名")
 		<< QString::fromLocal8Bit("学号") << QString::fromLocal8Bit("学生姓名") << QString::fromLocal8Bit("课程学分")
 		<< QString::fromLocal8Bit("分数") << QString::fromLocal8Bit("绩点") << QString::fromLocal8Bit("给分");
 	ui.tableWidget->setHorizontalHeaderLabels(headerText);
@@ -37,7 +54,7 @@ void te_grantgrade::te_showstu_class()
 	ui.tableWidget->horizontalHeader()->setStretchLastSection(true);//关键
 	ui.tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);//禁止编辑
 	//ui.tableWidget->setSelectionBehavior(QTableWidget::SelectRows);//一次选中一行
-	ui.tableWidget->setRowCount(10);
+	ui.tableWidget->setRowCount(15);
 	ui.tableWidget->setColumnCount(8);//设置列
 	ui.tableWidget->setAlternatingRowColors(true);//设置隔一行变一颜色，即：一灰一白  
 	ui.tableWidget->verticalHeader()->setVisible(false);
@@ -55,11 +72,12 @@ void te_grantgrade::te_showstu_class()
 	QSqlQuery query;
 	int n_row = 0;//获取行
 	QString str[8];
-	query.exec("select cno,cname,myclass.sno,sname,credit,grade,GPA from myclass,Student where tno='" + tno_grade + "'and Student.sno=myclass.sno");
+	QString sql = "select myclass.cnoid,TC.cname,myclass.sno,Student.sname,Course.credit,myclass.grade,myclass.GPA from Student,TC,myclass,Course where Course.cno=TC.cno and Student.sno=myclass.sno and TC.cnoid=myclass.cnoid and ctno='" + tno_grade + "'and Student.sno=myclass.sno order by myclass.grade desc";
+	query.exec(sql);
 	for (int i = 0; query.next(); i++)
 	{
 		//将按钮放入单元格中
-		QPushButton *crbtn = new QPushButton();
+		QPushButton* crbtn = new QPushButton();
 		crbtn->setText(QString::fromLocal8Bit("设置分数"));
 		ui.tableWidget->setCellWidget(i, 7, crbtn);//第7列设置按钮
 		for (int j = 0; j < 8; j++)
@@ -73,19 +91,42 @@ void te_grantgrade::te_showstu_class()
 			QString psno, pcno;
 			psno = str[2];
 			pcno = str[0];
-			grantpoint*grt = NULL;
+			grantpoint* grt = NULL;
 			grt = new grantpoint;
 			grt->receive_sno(psno);
 			grt->receive_cno(pcno);
 			grt->show();
-		});
+			});
 
 	}
-	ui.tableWidget->setRowCount(10 + n_row);//添加行(必须)
+	ui.tableWidget->setRowCount(15 + n_row);//添加行(必须)
 
 
 
 }
+
+void te_grantgrade::tbSearchByText(QString text)//搜索功能
+{
+	QList<QTableWidgetItem*> findItems = ui.tableWidget->findItems(text, Qt::MatchContains);
+
+	int nRow = ui.tableWidget->rowCount();
+	bool bRowHidden = true;
+	for (int i = 0; i < nRow; ++i)
+	{
+		bRowHidden = true;
+		foreach(QTableWidgetItem * item, findItems)
+		{
+			if (NULL == item) continue;
+			if (ui.tableWidget->row(item) == i)
+			{
+				bRowHidden = false;
+				break;
+			}
+		}
+		ui.tableWidget->setRowHidden(i, bRowHidden);
+	}
+}
+
 //void te_grantgrade::countgrade()
 //{
 //	QSqlQuery query;

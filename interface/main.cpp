@@ -37,10 +37,14 @@ bool OpenDatabase()
 int main(int argc, char* argv[])
 {
 	QApplication a(argc, argv);
+	//QFont f(QString::fromLocal8Bit("仿宋"), 12);			//修改整体字体
+	//a.setFont(f);
+	// 
 	//QgsApplication a(argc, argv, true);
 	//QgsApplication::setPrefixPath("D:/VS+Qgis/qgis二次开发环境/qgis/qgis-dev", true);
 	//QgsApplication::initQgis();    //初始化QGIS应用
 	interface w;
+
 	if (!OpenDatabase())
 		return 1;
 	w.show();

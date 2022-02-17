@@ -55,11 +55,11 @@ void mystudent::init_mystu()
 
 void mystudent::findmystudent_te()//搜索
 {
-	qDebug() << QStringLiteral("改变了文字，进行搜索");
+	//qDebug() << QStringLiteral("改变了文字，进行搜索");
 	QSqlQueryModel* modell = new QSqlQueryModel;
 	QString find, sql0;
 	find = ui.lineEdit->text();
-	qDebug() << "find = " << find;
+	//qDebug() << "find = " << find;
 	sql0 = "select TC.cname,Student.sno, Student.sname, Student.sclass, Student.ssex, Student.smajor, Student.ssdept from Student, myclass, TC where Student.sno=myclass.sno and myclass.cnoid = '" + cnoid + "' and TC.cnoid = '" + cnoid + "' and Student.sname LIKE '%" + find + "%'";
 	modell->setQuery(sql0);
 	ui.tableView->setModel(modell);

@@ -11,11 +11,14 @@ public:
 	addcourse(QWidget* parent = Q_NULLPTR);
 	~addcourse();
 	QString addcourse::receive_id_adacla(QString info);//教师工号接收
+signals:
+	//void somethingNew();
+public slots:
+	//void init_info();
 protected:
 	void init_info();
-	//void addcourse::addc();//添加课程
-	//void addcourse::delc();//删除课程
-	//void addcourse::setitem();//设置tno和tname
+	void tbSearchByText(QString text);
+
 private:
 	Ui::addcourse ui;
 	QString tno_add;
